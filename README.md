@@ -1,2 +1,2 @@
-# w207_final_project_jiang_mudigonda_sharma
+# w207_final_project_frishberg_jiang_mudigonda_sharma
 W207 Final Project
