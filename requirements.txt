@@ -1,0 +1,13 @@
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=1.0.0
+xgboost>=1.5.0
+tensorflow>=2.8.0
+matplotlib>=3.5.0
+seaborn>=0.11.0
+altair>=4.2.0
+vegafusion[embed]>=1.5.0
+vl-convert-python>=1.6.0
+jupyter>=1.0.0
+ipython>=7.0.0
+joblib>=1.0.0
