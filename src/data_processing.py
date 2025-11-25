@@ -332,7 +332,7 @@ def encode_categorical_features(df: pd.DataFrame) -> pd.DataFrame:
     # 8. Ordinal encode A1Cresult (has natural ordering: None < Norm < >7 < >8)
     if "A1Cresult" in df_encoded.columns:
         a1c_map = {"None": 0, "Norm": 1, ">7": 2, ">8": 3}
-        df_encoded["A1Cresult"] = df_encoded["A1Cresult"].map(a1c_map)
+        df_encoded["A1Cresult"] = df_encoded["A1Cresult"].map(a1c_map).fillna(0)
 
     # 9. Ordinal encode medication columns (has natural ordering: No < Down < Steady < Up)
     for col in config.MEDICATION_COLUMNS:
