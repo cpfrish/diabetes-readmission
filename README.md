@@ -20,7 +20,7 @@ This project implements machine learning models to predict hospital readmission 
 
 ```
 DS_207_Final_Project/
-├── src/                          # Core Python modules
+├── src/                         # Core Python modules
 │   ├── __init__.py              # Package initialization
 │   ├── config.py                # Configuration and constants
 │   ├── data_processing.py       # Data loading and preprocessing
@@ -47,7 +47,7 @@ DS_207_Final_Project/
 
 ---
 
-##  Getting Started
+## Getting Started
 
 ### Prerequisites
 

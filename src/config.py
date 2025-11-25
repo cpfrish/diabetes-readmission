@@ -12,25 +12,13 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RESULTS_DIR = os.path.join(PROJECT_ROOT, "results")
 DATA_DIR = os.path.join(PROJECT_ROOT, "data")
 
-# Data files - Each team member should have their own local copy
-# Option 1: Use environment variable (recommended)
+# Data files - Each team member should have their own local copy . Use environment variable (recommended)
 DIABETIC_DATA_CSV = os.environ.get(
     "DIABETIC_DATA_CSV", os.path.join(DATA_DIR, "diabetic_data.csv")
 )
 IDS_MAPPING_CSV = os.environ.get(
     "IDS_MAPPING_CSV", os.path.join(DATA_DIR, "IDS_mapping.csv")
 )
-
-# Option 2: Override in local_config.py (git-ignored)
-try:
-    from .local_config import DIABETIC_DATA_CSV as _LOCAL_DATA_CSV
-    from .local_config import IDS_MAPPING_CSV as _LOCAL_IDS_CSV
-
-    DIABETIC_DATA_CSV = _LOCAL_DATA_CSV
-    IDS_MAPPING_CSV = _LOCAL_IDS_CSV
-except ImportError:
-    pass  # Use defaults above
-
 # ============================================================================
 # DATA PROCESSING PARAMETERS
 # ============================================================================
@@ -38,19 +26,11 @@ except ImportError:
 # Columns to drop during preprocessing
 COLUMNS_TO_DROP = [
     "encounter_id",
-    "patient_nbr",
     "weight",
-    "admission_type_id",
-    "discharge_disposition_id",
-    "admission_source_id",
     "payer_code",
-    "medical_specialty",
-    "diag_1",
-    "diag_2",
-    "diag_3",
     "max_glu_serum",
-    "A1Cresult",
 ]
+
 
 # Continuous features to standardize
 CONTINUOUS_FEATURES = [
@@ -103,8 +83,9 @@ PRESCRIPTION_MAP = {
 # Readmission mapping
 READMISSION_MAP = {
     "NO": 0,  # no readmission recorded
-    ">30": 1,  # readmitted (over 30 days)
+    ">30": 0,  # readmitted (over 30 days)
     "<30": 1,  # readmitted (within 30 days)
+    # the binary classification: readmitted within 30 days vs not
 }
 
 # Train/Val/Test split parameters
@@ -115,6 +96,15 @@ RANDOM_STATE = 1234
 # ============================================================================
 # MODEL HYPERPARAMETERS
 # ============================================================================
+
+# Baseline Logistic regression parameters
+LOGISTIC_TF_PARAMS = {
+    "epochs": 50,
+    "batch_size": 64,
+    "learning_rate": 0.001,
+    "optimizer": "adam",
+}
+
 
 # Random Forest hyperparameter tuning options
 RF_TUNING_OPTIONS = {

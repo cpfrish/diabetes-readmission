@@ -2,13 +2,13 @@
 
 This directory should contain the diabetes dataset files. **Data files are NOT tracked in Git** to avoid GitHub's file size limits.
 
-## 📦 Required Data Files
+## Required Data Files
 
 Place the following files in this directory:
 - `diabetic_data.csv` - Main dataset (~18MB)
 - `IDS_mapping.csv` - ID mapping file
 
-## 🔽 How to Set Up Your Local Data
+## How to Set Up Your Local Data
 
 Each team member needs to set up their own local copy of the data. Choose one of the options below:
 
@@ -23,14 +23,6 @@ Each team member needs to set up their own local copy of the data. Choose one of
    └── IDS_mapping.csv
    ```
 
-### Option 2: Copy from Team Member
-
-If a team member has the data:
-```bash
-# From their location
-cd "/path/to/their/project/diabetes+130-us+hospitals+for+years+1999-2008"
-cp diabetic_data.csv IDS_mapping.csv "/path/to/your/project/data/"
-```
 
 ### Option 3: Use Custom Location with Environment Variable
 

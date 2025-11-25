@@ -138,6 +138,84 @@ def train_transformer_model(
 
 
 # ============================================================================
+# BASELINE MODEL - LOGISTIC REGRESSION
+# ============================================================================
+
+
+def train_logistic_regression_model(
+    X_train: pd.DataFrame,
+    Y_train: pd.Series,
+    X_val: pd.DataFrame,
+    Y_val: pd.Series,
+    tf_params: Dict[str, Any] = None,
+    verbose: int = 1,
+) -> Tuple[keras.Model, keras.callbacks.History]:
+    """
+    Train a TensorFlow Keras-based logistic regression baseline.
+
+    This builds a minimal model: Input -> Dense(1, activation='sigmoid'),
+    compiles with binary_crossentropy, and trains using parameters from
+    `config.LOGISTIC_TF_PARAMS` by default.
+
+    Returns the trained Keras model and the training History object.
+    """
+    if tf_params is None:
+        tf_params = config.LOGISTIC_TF_PARAMS
+
+    epochs = tf_params.get("epochs", 50)
+    batch_size = tf_params.get("batch_size", 64)
+    learning_rate = tf_params.get("learning_rate", 0.001)
+    optimizer_choice = tf_params.get("optimizer", "adam")
+
+    print("\n" + "=" * 70)
+    print("TRAINING BASELINE MODEL: TENSORFLOW LOGISTIC REGRESSION")
+    print("=" * 70)
+    print(f"TF params: epochs={epochs}, batch_size={batch_size}, learning_rate={learning_rate}, optimizer={optimizer_choice}")
+
+    input_shape = X_train.shape[1]
+
+    # Build model: a single sigmoid output unit
+    model = keras.Sequential(
+        [
+            keras.Input(shape=(input_shape,)),
+            keras.layers.Dense(1, activation="sigmoid"),
+        ]
+    )
+
+    # Choose optimizer
+    if optimizer_choice.lower() == "adam":
+        optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
+    elif optimizer_choice.lower() == "sgd":
+        optimizer = keras.optimizers.SGD(learning_rate=learning_rate)
+    else:
+        # Fallback to Adam for unknown names
+        optimizer = keras.optimizers.Adam(learning_rate=learning_rate)
+
+    model.compile(optimizer=optimizer, loss="binary_crossentropy", metrics=["accuracy"])
+
+    history = model.fit(
+        X_train,
+        Y_train,
+        validation_data=(X_val, Y_val),
+        epochs=epochs,
+        batch_size=batch_size,
+        verbose=verbose,
+    )
+
+    # Evaluation
+    train_loss, train_acc = model.evaluate(X_train, Y_train, verbose=0)
+    val_loss, val_acc = model.evaluate(X_val, Y_val, verbose=0)
+
+    if verbose:
+        print(f"Training accuracy: {train_acc:.2%}")
+        print(f"Validation accuracy: {val_acc:.2%}")
+
+    print("=" * 70)
+
+    return model, history
+
+
+# ============================================================================
 # RANDOM FOREST MODEL
 # ============================================================================
 
@@ -406,6 +484,7 @@ if __name__ == "__main__":
     print("Available models:")
     print("  - Transformer (build_transformer_model, train_transformer_model)")
     print("  - Random Forest (train_random_forest_model)")
+    print("  - Logistic Regression (train_logistic_regression_model)")
     print("  - XGBoost (train_xgboost_model)")
     print("Utility functions:")
     print("  - get_feature_importance")

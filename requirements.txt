@@ -11,3 +11,5 @@ vl-convert-python>=1.6.0
 jupyter>=1.0.0
 ipython>=7.0.0
 joblib>=1.0.0
+imbalanced-learn>=0.10.0
+mealpy>=3.0.0

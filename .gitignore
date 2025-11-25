@@ -60,3 +60,6 @@ ENV/
 !README.md
 !requirements.txt
 !.gitignore
+
+# extra files generated during development
+.ipynb_checkpoints/
