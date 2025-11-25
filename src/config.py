@@ -83,7 +83,7 @@ PRESCRIPTION_MAP = {
 # Readmission mapping
 READMISSION_MAP = {
     "NO": 0,  # no readmission recorded
-    ">30": 0,  # readmitted (over 30 days)
+    ">30": 1,  # readmitted (over 30 days)
     "<30": 1,  # readmitted (within 30 days)
     # the binary classification: readmitted within 30 days vs not
 }

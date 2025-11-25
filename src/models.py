@@ -352,7 +352,6 @@ def train_xgboost_model(
         XGBClassifier(
             objective="binary:logistic",
             eval_metric="logloss",
-            use_label_encoder=False,
             scale_pos_weight=scale_pos_weight,
             random_state=config.RANDOM_STATE,
         ),
