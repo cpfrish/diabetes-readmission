@@ -8,10 +8,10 @@ This document outlines the contribution distribution and key files for our proje
 ```
 . 
 ├── notebooks/ 
-│ ├── Rahil_Data_Processing_and_Baseline.ipynb 
-│ ├── Sriya_EDA_Feature_Analysis.ipynb 
-│ ├── Colin_Visualization_and_Transformer.ipynb 
-│ ├── Terra_RF_XGBoost_Models.ipynb 
+│ ├── rahil_dp_baseline.ipynb 
+│ ├── sriya_eda_comparison.ipynb 
+│ ├── colin_viz_transformer.ipynb 
+│ ├── terra_rf_xgb.ipynb 
 ├── results/ 
 │ ├── train.csv 
 │ ├── val.csv 
@@ -20,13 +20,20 @@ This document outlines the contribution distribution and key files for our proje
 │ ├── transformer.h5 
 │ ├── rf.pkl 
 │ ├── xgb.pkl 
-│ ├── final_results_comparison.csv 
+│ ├── stats_baseline.csv
+│ ├── stats_transformer.csv
+│ ├── stats_rf_xgb.csv
+│ ├── final_comparison.csv 
 ├── src/ (Python utility files, separated by model type) 
-│ ├── rahil_data_utils.py 
-│ ├── colin_transformer_model.py 
-│ ├── terra_rf_model.py 
-│ ├── terra_xgb_model.py 
-│ ├── sriya_analysis_utils.py 
+│ ├── rahil_data_processing.py 
+│ ├── rahil_baseline.py
+│ ├── colin_cv.py 
+│ ├── colin_model_transformer.py 
+│ ├── terra_model_rf.py 
+│ ├── terra_model_xgb.py 
+│ ├── sriya_eda.py 
+│ ├── sriya_feature_selection.py
+│ ├── sriya_evaluation.py
 ├── README.md 
 └── requirements.txt
 ```
@@ -95,7 +102,7 @@ The project is structured so that each notebook's "Run All" execution follows a 
 
 For a full project run, please execute the notebooks in the following order:
 
-1.  **`Rahil_Data_Processing_and_Baseline.ipynb`** (Creates data splits and baseline model)
-2.  **`Colin_Visualization_and_Transformer.ipynb`** (Needs data splits)
-3.  **`Terra_RF_XGBoost_Models.ipynb`** (Needs data splits)
-4.  **`Sriya_EDA_Feature_Analysis.ipynb`** (Needs data splits and all trained models)
+1.  **`rahil_dp_baseline.ipynb`** (Creates data splits and baseline model)
+2.  **`colin_viz_transformer.ipynb`** (Needs data splits)
+3.  **`terra_rf_xgb.ipynb`** (Needs data splits)
+4.  **`sriya_eda_comparison.ipynb`** (Needs data splits and all trained models)
