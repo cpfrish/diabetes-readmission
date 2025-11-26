@@ -5,6 +5,7 @@ This document outlines the contribution distribution and key files for our proje
 ---
 
 ### Directory Structure
+```
 . 
 ├── notebooks/ 
 │ ├── Rahil_Data_Processing_and_Baseline.ipynb 
@@ -28,6 +29,7 @@ This document outlines the contribution distribution and key files for our proje
 │ ├── sriya_analysis_utils.py 
 ├── README.md 
 └── requirements.txt
+```
 
 ---
 
