@@ -15,10 +15,10 @@ build/
 *.ipynb_checkpoints
 
 # Data files (keep structure but ignore large files)
-*.csv
+# *.csv
 *.tar.Z
-*.h5
-*.pkl
+# *.h5
+# *.pkl
 *.joblib
 data/*.csv
 data/*.tar.Z
