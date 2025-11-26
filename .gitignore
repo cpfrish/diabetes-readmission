@@ -29,11 +29,11 @@ diabetes+130-us+hospitals+for+years+1999-2008/
 src/local_config.py
 
 # Results and outputs
-results/*.png
-results/*.jpg
-results/*.html
-results/*.pdf
-results/models/
+# results/*.png
+# results/*.jpg
+# results/*.html
+# results/*.pdf
+# results/models/
 
 # IDE
 .vscode/
