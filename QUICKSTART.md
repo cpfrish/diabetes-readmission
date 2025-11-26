@@ -15,71 +15,51 @@
    pip install -r requirements.txt
    ```
 
-3. **IMPORTANT: Set up your local data files**:
+3. **Set up your local data files**:
    
-   **Data files are NOT in Git!** Each team member needs their own local copy.
+   **Data files are NOT in Git!** to avoid GitHub's file size limits (18MB+). Each team member needs their own local copy.
    
-   **Option A - Use the data/ directory (Recommended):**
+   **Use the data/ directory:**
    ```bash
    # Copy the data files from team shared drive or existing location
    cp /path/to/diabetic_data.csv data/
    cp /path/to/IDS_mapping.csv data/
    ```
-   
-   **Option B - Use environment variables:**
-   ```bash
-   # macOS/Linux
-   export DIABETIC_DATA_CSV="/your/path/diabetic_data.csv"
-   export IDS_MAPPING_CSV="/your/path/IDS_mapping.csv"
-   ```
-   
-   **Option C - Create local_config.py:**
-   ```bash
-   cp src/local_config.py.example src/local_config.py
-   # Then edit src/local_config.py with your paths
-   ```
-   
+
    See `data/README.md` for detailed instructions!
 
 4. **Verify your setup**:
    ```bash
    python setup_data.py
    ```
-   
+
+   You should see:
+   ```
+   All required data files are present.
+   ```
+
    This will check if your data files are accessible.
-
-5. **Test the complete pipeline**:
-   Open `notebooks/main_analysis.ipynb` and run the first few cells.
-
-
-## Git Workflow
-
-### Starting work:
-```bash
-git pull origin main
-git checkout -b feature/your-name-module-update
-```
-
-### While working:
-```bash
-# Make changes to your assigned module
-git add src/your_module.py
-git commit -m "Description of what you changed"
-```
-
-### When done:
-```bash
-git push origin feature/your-name-module-update
-# Then create a Pull Request on GitHub
-```
 
 ---
 
 ## Common Tasks
 
-### Run the complete analysis:
-```bash
-jupyter notebook notebooks/main_analysis.ipynb
+### Test in Python:
+```python
+from src import config
+import os
+
+print("Checking data files...")
+print(f"CSV: {os.path.exists(config.DIABETIC_DATA_CSV)}")
+print(f"IDS: {os.path.exists(config.IDS_MAPPING_CSV)}")
+```
+
+### Test the preprocessing pipeline:
+```python
+from src import data_processing as dp
+
+X_train, X_val, X_test, Y_train, Y_val, Y_test, raw_df = dp.preprocess_pipeline()
+print(f"Success! Loaded {len(raw_df)} patient records")
 ```
 
 ### Test a single module:
@@ -121,3 +101,24 @@ importance = models.get_feature_importance(model, X_train.columns)
 importance.to_csv('results/feature_importance.csv')
 ```
 
+---
+
+## Directory Structure
+
+After setup, your project should look like:
+
+```
+Final Project/
+├── data/                      # ← Your local data (NOT in git)
+│   ├── README.md             # (tracked)
+│   ├── .gitkeep              # (tracked)
+│   ├── diabetic_data.csv     # (NOT tracked - you add this)
+│   └── IDS_mapping.csv       # (NOT tracked - you add this)
+├── src/
+│   ├── config.py
+│   ├── local_config.py       # (Optional, NOT tracked)
+│   └── ...
+├── setup_data.py
+├── migrate_data.py
+└── ...
+```
