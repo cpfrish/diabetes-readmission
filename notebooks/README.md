@@ -74,7 +74,7 @@ The project is structured so that each notebook's "Run All" execution follows a 
     2.  **Input:** Load processed data splits from `/results/*.csv`.
     3.  Build, train, and evaluate the **Transformer Model**.
     4.  **Output:** Save the trained Transformer model to `/results/transformer.h5`.
-    6.  **Output:** Save the statistics from the transformer model to `/results/stats_transformer.csv`.
+    5.  **Output:** Save the statistics from the transformer model to `/results/stats_transformer.csv`.
 
 ### 4. Terra: Random Forest & XGBoost Models
 
