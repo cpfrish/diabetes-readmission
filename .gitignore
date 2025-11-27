@@ -1,0 +1,67 @@
+
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+main_analysis.ipynb/
+gwo_smote_analysis.ipynb/
+
+# Data files (keep structure but ignore large files)
+*.csv
+*.tar.Z
+*.h5
+*.pkl
+*.joblib
+data/*.csv
+data/*.tar.Z
+diabetes/
+diabetes+130-us+hospitals+for+years+1999-2008/
+
+# Local configuration (each user has their own)
+src/local_config.py
+
+# Results and outputs
+results/*.png
+results/*.jpg
+results/*.html
+results/*.pdf
+results/models/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Exceptions - keep README files and configs
+!README.md
+!requirements.txt
+!.gitignore
+
+# extra files generated during development
+.ipynb_checkpoints/
