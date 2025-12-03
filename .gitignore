@@ -32,7 +32,7 @@ src/local_config.py
 # Results and outputs
 results/*.png
 results/*.jpg
-results/*.html
+# results/*.html
 results/*.pdf
 * results/models/
 
