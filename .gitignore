@@ -36,6 +36,9 @@ results/*.jpg
 results/*.pdf
 * results/models/
 
+# untitled projects from tensorflow
+notebooks/untitled_project/
+
 # IDE
 .vscode/
 .idea/
