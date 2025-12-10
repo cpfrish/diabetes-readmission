@@ -33,7 +33,7 @@ src/local_config.py
 results/*.png
 results/*.jpg
 # results/*.html
-results/*.pdf
+# results/*.pdf
 * results/models/
 
 # untitled projects from tensorflow
