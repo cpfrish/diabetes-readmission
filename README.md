@@ -133,3 +133,18 @@ For a full project run, please execute the notebooks in the following order:
 3.  **`colin_viz_transformer.ipynb`** (Needs data splits from both dp outputs)
 4.  **`terra_rf_xgb.ipynb`** (Needs data splits)
 5.  **`sriya_eda_comparison.ipynb`** (Needs data splits and all trained models)
+## Results
+
+Class imbalance made raw accuracy misleading (near-zero F1 at deceptively high accuracy), so training data was rebalanced (SMOTE/oversampling to ~51/49) and **F1 drove model selection**.
+
+| Model | Test F1 | Test accuracy | Notes |
+|---|---|---|---|
+| **XGBoost** | **57.91%** | **56.47%** | Best overall; selected model |
+| Random forest | 57.56% | 56.31% | Competitive but overfit |
+| Logistic regression | lower | — | Baseline |
+| Tabular transformer | lowest | — | Underperformed on tabular data |
+
+Subgroup check on the selected model: F1 59.81% (female) vs. 55.76% (male). SHAP was used to explain the drivers; see the figures below and the full discussion (including why absolute scores are modest — label noise, 1999–2008 temporal boundary) in [`final_project_report.pdf`](final_project_report.pdf).
+
+![Model comparison](results/figures/model_comparison_plots.png)
+![ROC curves](results/figures/roc_curves_shap.png)

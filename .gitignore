@@ -64,3 +64,6 @@ ENV/
 !README.md
 !requirements.txt
 !.gitignore
+
+.DS_Store
+*.pkl
